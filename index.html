@@ -5,10 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    summoner name: <input type="text" id="summoner_name"></br>
-    <select id = "choose_region" >
+
+    <!-- Summoner 1 -->
+     <input type="text" id="summoner_name"></br>
+    <select id = "choose_region" onchange = "reg(1)" >
+        <option value="0">BR</option>
+        <option value = "1">EUN</option>
+        <option value = "2">EUW</option>
+        <option value = "3">JP</option>
+        <option value = "4">KR</option>
+        <option value = "5">LA1</option>
+        <option value = "6">LA2</option>
+        <option value = "7">NA1</option>
+        <option value = "8">NA2</option>
+        <option value = "9">OC</option>
+        <option value = "10">TR</option>
+        <option value = "11">RU</option>
+        <option value = "12">PH</option>
+        <option value = "13">SG</option>
+        <option value = "14">TH</option>
+        <option value = "15">TW</option>
+        <option value = "16">VN</option>
+
+    </select>
+    <select id = "choose_ranked_queue" >
+        <option value="0">Solo/Duo</option>
+        <option value = "1">Flex</option>
+    </select>
+
+
+    <!-- input search bar to search for a user  -->
+    <input type="button" id="'search_button" value="search the chosen summoner!" onclick = "Search_summoner(1)">
+
+
+    <!-- summoner 2 -->
+    <input type="text" id="summoner_name2"></br>
+    <select id = "choose_region2"  >
         <option value="0">BR</option>
         <option value = "1">EUN</option>
         <option value = "2">EUW</option>
@@ -29,32 +64,94 @@
 
     </select>
     
-    <div id = "testRegion"></div>
-
-    <select id = "choose_ranked_queue" >
-        <option value="1">Solo/Duo</option>
-        <option value = "0">Flex</option>
+    <select id = "choose_ranked_queue2" >
+        <option value="0">Solo/Duo</option>
+        <option value = "1">Flex</option>
    
 
     </select>
 
-    <div id = "testQueue"></div>
+   
 
     <!-- input search bar to search for a user  -->
-    <input type="button" id="'search_button" value="search the chosen summoner!" onclick = "Search_summoner()">
-    <!-- divs to displayer the users name , level and profile picture  -->
-    <div id="summoner_name_data"></div>
-    <div id="summonerlevel_data"></div>
-    <div id="summonerprofilepic_data">
-        <img id="summonerprofilepic_picture" src="">
-    </div>
-    <div id="ranked_DATA">
-        <div id = "ranked_win"></div>
-        <div id = "ranked_lose"></div>
-        <div id = "ranked_winratio"></div>
-        <div id = "ranked_division"></div>
+    <input type="button" id="'search_button2" value="search the chosen summoner!" onclick = "Search_summoner(2)">
+    <button id="compare" style="display: none" onclick = "compareSummoners()">Compare Summoners</button>
 
-    </div>
+ 
+
+    <table id = "result">
+        <tr id = "titles">
+            <td></td>
+            <td>Summoner 1</td>
+            <td>Summoner 2</td>
+            <td>Comparison: Summoner 1</td>
+            <td>Comparison: Summoner 2</td>
+        </tr>
+        <tr id="profilePic">
+            <td></td>
+            <td id ="summonerprofilepic_data">
+                <img id="summonerprofilepic_picture" src="">
+            </td>
+            <td id ="summonerprofilepic_data2">
+                <img id="summonerprofilepic_picture2" src="">
+            </td>
+
+            <td></td>
+            <td></td>
+        </tr>
+        <tr id = "nameOf">
+            <td>Summoner Name</td>
+            <td id="summoner_name_data"></td>
+            <td id="summoner_name_data2"></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr id = "levelOf">
+            <td>Summoner Level</td>
+            <td id="summonerlevel_data"></td>
+            <td id="summonerlevel_data2"></td>
+            <td id = "sum1level"></td>
+            <td id = "sum2level"></td>
+        </tr>
+        <tr id = "winsOf">
+            <td>Wins</td>
+            <td id="ranked_win"></td>
+            <td id="ranked_win2"></td>
+            <td id = "sum1wins"></td>
+            <td id = "sum2wins"></td>
+        </tr>
+        <tr id = "LossesOf">
+            <td>Losses</td>
+            <td id="ranked_lose"></td>
+            <td id="ranked_lose2"></td>
+            <td id = "sum1losses"></td>
+            <td id = "sum2losses"></td>
+        </tr>
+        <tr id = "winLossRatio">
+            <td>Win/Loss Ratio</td>
+            <td id = "ranked_winratio"></td>
+            <td id = "ranked_winratio2"></td>
+            <td id = "sum1winloss"></td>
+            <td id = "sum2winloss"></td>
+        </tr>
+        <tr id = "ranked">
+            <td>Rank</td>
+            <td id ="ranked_division"></td>
+            <td id ="ranked_division2"></td>
+            <td id = "sum1division"></td>
+            <td id = "sum2division"></td>
+        </tr>
+        <tr id = "rankedPOINTS">
+            <td>LP</td>
+            <td id ="ranked_points1"></td>
+            <td id ="ranked_points2"></td>
+            <td id = "sum1leaguePoints"></td>
+            <td id = "sum2leaguePoints"></td>
+        </tr>
+
+
+        
+    </table>
 
 </body>
 </html>
