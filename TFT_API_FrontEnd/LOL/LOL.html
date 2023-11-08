@@ -4,8 +4,169 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="LOLSearch.css">
 </head>
 <body>
-    
+    <div class="container">
+        <img id="image" src="/images/LOL_Search.jpg" alt="">
+        <div class="input-container">
+            <select id = "choose_region" onchange = "chooseRegion(1)" class="select-input">
+                <option value="0">BR</option>
+                <option value = "1">EUN</option>
+                <option value = "2">EUW</option>
+                <option value = "3">JP</option>
+                <option value = "4">KR</option>
+                <option value = "5">LA1</option>
+                <option value = "6">LA2</option>
+                <option value = "7">NA1</option>
+                <option value = "8">NA2</option>
+                <option value = "9">OC</option>
+                <option value = "10">TR</option>
+                <option value = "11">RU</option>
+                <option value = "12">PH</option>
+                <option value = "13">SG</option>
+                <option value = "14">TH</option>
+                <option value = "15">TW</option>
+                <option value = "16">VN</option>
+            </select>
+            <select id = "choose_ranked_queue" class="select-input">
+                <option value="0">Solo/Duo</option>
+                <option value = "1">Flex</option>
+            </select>
+
+            <input type="text" id="summoner_name" class="custom-input">
+            <input type="button" id="search_button" value="Search" onclick="Search_summoner(1)" class="select-input">
+            <div id="error"></div>
+        </div>
+
+        <table id = "result">
+            <tr id = "titles">
+                <td></td>
+                <td>Summoner 1</td>
+            </tr>
+            <tr id="profilePic">
+                <td></td>
+                <td id ="summonerprofilepic_data">
+                    <img id="summonerprofilepic_picture" src="">
+                </td>
+            </tr>
+            <tr id = "nameOf">
+                <td>Summoner Name</td>
+                <td id="summoner_name_data"></td>
+            </tr>
+            <tr id = "levelOf">
+                <td>Summoner Level</td>
+                <td id="summonerlevel_data"></td>
+                <td id = "sum1level"></td>
+            </tr>
+            <tr id = "winsOf">
+                <td>Wins</td>
+                <td id="ranked_win"></td>
+                <td id = "sum1wins"></td>
+            </tr>
+            <tr id = "LossesOf">
+                <td>Losses</td>
+                <td id="ranked_lose"></td>
+                <td id = "sum1losses"></td>
+            </tr>
+            <tr id = "winLossRatio">
+                <td>Win/Loss Ratio</td>
+                <td id = "ranked_winratio"></td>
+                <td id = "sum1winloss"></td>
+            </tr>
+            <tr id = "pointsLeague">
+                <td>League Points</td>
+                <td id="ranked_points1"></td>
+                <td id = "sum1leaguePoints"></td>
+            </tr>
+            <tr id = "ranked">
+                <td>Rank</td>
+                <td id ="ranked_division"></td>
+                <td id = "sum1division"></td>
+            </tr>
+        </table>
+
+        <table id = "result2">
+            <tr id = "titles">
+                <td></td>
+                <td>Summoner 2</td>
+            </tr>
+            <tr id="profilePic">
+                <td></td>
+                <td id ="summonerprofilepic_data2">
+                    <img id="summonerprofilepic_picture2" src="">
+                </td>
+            </tr>
+            <tr id = "nameOf">
+                <td>Summoner Name</td>
+                <td id="summoner_name_data2"></td>
+            </tr>
+            <tr id = "levelOf">
+                <td>Summoner Level</td>
+                <td id="summonerlevel_data2"></td>
+                <td id = "sum2level"></td>
+            </tr>
+            <tr id = "winsOf">
+                <td>Wins</td>
+                <td id="ranked_win2"></td>
+                <td id = "sum2wins"></td>
+            </tr>
+            <tr id = "LossesOf">
+                <td>Losses</td>
+                <td id="ranked_lose2"></td>
+                <td id = "sum2losses"></td>
+            </tr>
+            <tr id = "winLossRatio">
+                <td>Win/Loss Ratio</td>
+                <td id = "ranked_winratio2"></td>
+                <td id = "sum2winloss"></td>
+            </tr>
+            <tr id = "pointsLeague">
+                <td>League Points</td>
+                <td id="ranked_points2"></td>
+                <td id = "sum2leaguePoints"></td>
+            </tr>
+            <tr id = "ranked">
+                <td>Rank</td>
+                <td id ="ranked_division2"></td>
+                <td id = "sum2division"></td>
+            </tr>
+        </table>
+
+            <div id="input-container2" class="input-container2">
+                <h1 id="header" class="input-container2-h1">Search for Second Summoner to Compare Stats</h1>
+                <select id="choose_region2" onchange="chooseRegion(2)" class="select-input">
+                    <option value="0">BR</option>
+                    <option value = "1">EUN</option>
+                    <option value = "2">EUW</option>
+                    <option value = "3">JP</option>
+                    <option value = "4">KR</option>
+                    <option value = "5">LA1</option>
+                    <option value = "6">LA2</option>
+                    <option value = "7">NA1</option>
+                    <option value = "8">NA2</option>
+                    <option value = "9">OC</option>
+                    <option value = "10">TR</option>
+                    <option value = "11">RU</option>
+                    <option value = "12">PH</option>
+                    <option value = "13">SG</option>
+                    <option value = "14">TH</option>
+                    <option value = "15">TW</option>
+                    <option value = "16">VN</option>
+                </select>
+                <select id = "choose_ranked_queue" >
+                    <option value="0">Solo/Duo</option>
+                    <option value = "1">Flex</option>
+                </select>
+
+                <input type="text" id="summoner_name2" class="custom-input">
+                <input type="button" id="search_button2" value="Search" onclick="Search_summoner(2)" class="select-input">
+                <div id="error2"></div>
+            </div>
+
+            <button id="compare" onclick = "compareSummoners()">Compare Summoners</button>
+    </div>
+
+    <script src="LOLResult.js"></script>
 </body>
 </html>
