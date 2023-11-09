@@ -285,10 +285,33 @@ async function data(num){
 
   }
   catch(error){
-      console.log(error);
+    console.log("Error: "+error);
+    if(num == 1){
+      document.getElementById("error").style.display = "block";
+      document.getElementById("error").innerHTML = "User not found within this region.";
+      document.getElementById("summonerprofilepic_picture").innerHTML = "";
+      document.getElementById("summoner_name_data").innerHTML = "";
+      document.getElementById("summonerlevel_data").innerHTML= "";
+      document.getElementById("ranked_win").innerHTML = "";
+      document.getElementById("ranked_lose").innerHTML = "";
+      document.getElementById("ranked_winratio").innerHTML ="";
+      document.getElementById("ranked_points").innerHTML = "";
+      document.getElementById("ranked_division").innerHTML= "";
+    }
 
+    if(num == 2){
+      document.getElementById("error").style.display = "block";
+      document.getElementById("error").innerHTML = "User not found within this region.";
+      document.getElementById("summonerprofilepic_picture2").innerHTML = "";
+      document.getElementById("summoner_name_data2").innerHTML = "";
+      document.getElementById("summonerlevel_data2").innerHTML= "";
+      document.getElementById("ranked_win2").innerHTML = "";
+      document.getElementById("ranked_lose2").innerHTML = "";
+      document.getElementById("ranked_winratio2").innerHTML ="";
+      document.getElementById("ranked_points2").innerHTML = "";
+      document.getElementById("ranked_division2").innerHTML= "";
+    }
   }
-
 
   
 
