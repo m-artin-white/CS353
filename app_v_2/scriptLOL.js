@@ -23,6 +23,7 @@ const Regions = [
 
 
 async function Search_summoner(){
+  document.getElementById('result').style.display = 'table';
   clearStats();
   document.getElementById("error").innerHTML = "";
   summoner_name = document.getElementById("summoner_name").value;

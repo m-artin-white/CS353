@@ -186,3 +186,6 @@
   #form #compare {
     margin-right: 5px;
   }
+#result {
+  display: none;
+}
