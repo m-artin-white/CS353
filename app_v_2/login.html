@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="styleLOGIN.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="inner">
+            <div class="logo">
+                <div>
+                    <h1>StatsSummoner.com</h1>
+                </div>
+            </div>
+
+            <nav>
+                <li><span><a href="home.html">Home</a></span></li>
+                <li><span><a href="indexLOL.html">League Of Legends</a></span></li>
+                <li><span><a href="indexTFT.html">Teamfight Tactics</a></span></li>
+                <li><span><a href="">Contact</a></span></li>
+                <li><span><a href="login.html" class="button">Log-in</a></span></li>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="wrapper">
+          <div class="title"><span>Login</span></div>
+          <form id = "loginForm">
+            <div class="row">
+              <i class="fas fa-user"></i>
+              <input id = "email" type="email" placeholder="Email" required>
+            </div>
+            <div class="row">
+              <i class="fas fa-lock"></i>
+              <input id = "password" type="password" placeholder="Password" required>
+            </div>
+            <div class="pass"><a href="#">Forgot password?</a></div>
+            <div class="row button">
+              <input type="submit" value="Login">
+            </div>
+            <div class="signup-link">Not a member? <a href="signup.html">Signup now</a></div>
+          </form>
+        </div>
+      </div>
+
+      <script type="module">
+        
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+        import { getDatabase, set, ref, child, get } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
+       
+        const firebaseConfig = {
+        apiKey: "AIzaSyDnZeG0Z0xhePiQwZV2EZbC-bDzno4ZUOI",
+        authDomain: "statssummoner.firebaseapp.com",
+        databaseURL: "https://statssummoner-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "statssummoner",
+        storageBucket: "statssummoner.appspot.com",
+        messagingSenderId: "353054373375",
+        appId: "1:353054373375:web:25281309fb0972776063ca",
+        measurementId: "G-3587ETFE69"
+      };
+      
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase();
+        const auth = getAuth(app);
+        const dbref = ref(db);
+
+        let email = document.getElementById("email");
+        let password = document.getElementById("password");
+        let loginForm = document.getElementById("loginForm");
+
+        let loginUser = evt => {
+            evt.preventDefault();
+
+            signInWithEmailAndPassword(auth, email.value, password.value)
+            .then((credentials)=>{
+              console.log(credentials);
+                get(child(dbref, 'UsersAuthList/'+credentials.user.uid)).then((snapshot) => {
+                  console.log(snapshot);
+                  if(snapshot.exists){
+                    sessionStorage.setItem("user-info", JSON.stringify({
+                      name: snapshot.val().name
+                    }))
+
+                    sessionStorage.setItem("user-creds", JSON.stringify(credentials.user));
+                    window.location.href = "home.html";
+                  }
+                })
+            })
+            .catch((error)=>{
+                alert(error.message);
+                console.log(error.code);
+                console.log(error.message);
+            })
+        }
+
+        loginForm.addEventListener('submit', loginUser);
+
+      </script>
+</body>
+</html>

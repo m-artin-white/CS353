@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Stats Comparison</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<!-- Search Section for First Player -->
+<div id="playerOneSearch">
+    <input type="text" id="summoner_name" placeholder="Enter First Player's Name">
+    <select id="choose_region">
+        <option>BR1</option>
+        <option>EUN1</option>
+        <option>EUW1</option>
+        <option>JP1</option>
+        <option>KR</option>
+        <option>LA1</option>
+        <option>LA2</option>
+        <option>NA1</option>
+        <option>OC1</option>
+        <option>TR1</option>
+        <option>RU</option>
+        <option>PH2</option>
+        <option>SG2</option>
+        <option>TH2</option>
+        <option>TW2</option>
+        <option>VN2</option>
+    </select>
+    <button onclick="Search_summoner(1)">Search First Player</button>
+    <div id="error"></div>
+</div>
+
+<!-- Display Area for First Player's Stats -->
+<div id="playerOneStats">
+    <!-- Player one stats will be displayed here -->
+</div>
+
+<!-- Search Section for Second Player -->
+<div id="playerTwoSearch" class="hidden">
+    <input type="text" id="summoner_name2" placeholder="Enter Second Player's Name">
+    <select id="choose_region2">
+        <option>BR1</option>
+        <option>EUN1</option>
+        <option>EUW1</option>
+        <option>JP1</option>
+        <option>KR</option>
+        <option>LA1</option>
+        <option>LA2</option>
+        <option>NA1</option>
+        <option>OC1</option>
+        <option>TR1</option>
+        <option>RU</option>
+        <option>PH2</option>
+        <option>SG2</option>
+        <option>TH2</option>
+        <option>TW2</option>
+        <option>VN2</option>
+    </select>
+    <button onclick="Search_summoner(2)">Search Second Player</button>
+    <div id="error2"></div>
+</div>
+
+<!-- Display Area for Second Player's Stats -->
+<div id="playerTwoStats">
+    <!-- Player two stats will be displayed here -->
+</div>
+
+<!-- Comparison Section -->
+<div id="comparisonSection" class="hidden">
+    <button onclick="compareSummoners()">Compare Players</button>
+    <div id="comparisonResults">
+        <!-- Comparison results will be displayed here -->
+    </div>
+</div>
+</body>
+</html>

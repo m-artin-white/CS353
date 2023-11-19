@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="tftSearch.css">
+</head>
+<body>
+    <div class="container">
+        <img id="image" src="/images/TFT_Search.jpeg" alt="">
+        <div class="input-container">
+            <select id="choose_region" onchange="chooseRegion(1)" class="select-input">
+                <option>BR1</option>
+                <option>EUN1</option>
+                <option>EUW1</option>
+                <option>JP1</option>
+                <option>KR</option>
+                <option>LA1</option>
+                <option>LA2</option>
+                <option>NA1</option>
+                <option>OC1</option>
+                <option>TR1</option>
+                <option>RU</option>
+                <option>PH2</option>
+                <option>SG2</option>
+                <option>TH2</option>
+                <option>TW2</option>
+                <option>VN2</option>
+            </select>
+            <input type="text" id="summoner_name" class="custom-input">
+            <input type="button" id="search_button" value="Search" onclick="Search_summoner(1)" class="select-input">
+            <div id="error"></div>
+        </div>
+        <table id = "result">
+                <tr id = "titles">
+                    <td></td>
+                    <td>Summoner 1</td>
+                </tr>
+                <tr id="profilePic">
+                    <td></td>
+                    <td id ="imageCell1"></td>
+                </tr>
+                <tr id = "nameOf">
+                    <td>Summoner Name</td>
+                    <td id="name1"></td>
+                </tr>
+                <tr id = "levelOf">
+                    <td>Summoner Level</td>
+                    <td id="level1"></td>
+                </tr>
+                <tr id = "winsOf">
+                    <td>Wins</td>
+                    <td id="wins1"></td>
+                </tr>
+                <tr id = "LossesOf">
+                    <td>Losses</td>
+                    <td id="losses1"></td>
+                </tr>
+                <tr id = "winLossRatio">
+                    <td>Win/Loss Ratio</td>
+                    <td id = "winloss1"></td>
+                </tr>
+                <tr id = "pointsLeague">
+                    <td>League Points</td>
+                    <td id="leaguePoints1"></td>
+                </tr>
+                <tr id = "ranked">
+                    <td>Rank</td>
+                    <td id ="rank1"></td>
+                </tr>
+                <tr id = "tierzz">
+                    <td>Tier</td>
+                    <td id="tier1"></td>
+                </tr>
+                <tr id = "vet">
+                    <td>Veteran Status</td>
+                    <td id="veteran1"></td>
+                </tr>
+            </table>
+            
+            <table id = "result2">
+                <tr id = "titles">
+                    <td>Summoner 2</td>
+                </tr>
+                <tr id="profilePic">
+                    <td id ="imageCell2"></td>
+                </tr>
+                <tr id = "nameOf">
+                    <td id="name2"></td>
+                </tr>
+                <tr id = "levelOf">
+                    <td id="level2"></td>
+                </tr>
+                <tr id = "winsOf">
+                    <td id="wins2"></td>
+                </tr>
+                <tr id = "LossesOf">
+                    <td id="losses2"></td>
+                </tr>
+                <tr id = "winLossRatio">
+                    <td id = "winloss2"></td>
+                </tr>
+                <tr id = "pointsLeague">
+                    <td id="leaguePoints2"></td>
+                </tr>
+                <tr id = "ranked">
+                    <td id ="rank2"></td>
+                </tr>
+                <tr id = "tierzz">
+                    <td id="tier2"></td>
+                </tr>
+                <tr id = "vet">
+                    <td id="veteran2"></td>
+                </tr>
+            </table>
+
+            <div id="input-container2" class="input-container2">
+                <h1 id="header" class="input-container2-h1">Search for Second Summoner to Compare Stats</h1>
+                <select id="choose_region2" onchange="chooseRegion(2)" class="select-input">
+                    <option>BR1</option>
+                    <option>EUN1</option>
+                    <option>EUW1</option>
+                    <option>JP1</option>
+                    <option>KR</option>
+                    <option>LA1</option>
+                    <option>LA2</option>
+                    <option>NA1</option>
+                    <option>OC1</option>
+                    <option>TR1</option>
+                    <option>RU</option>
+                    <option>PH2</option>
+                    <option>SG2</option>
+                    <option>TH2</option>
+                    <option>TW2</option>
+                    <option>VN2</option>
+                </select>
+                <input type="text" id="summoner_name2" class="custom-input">
+                <input type="button" id="search_button2" value="Search" onclick="Search_summoner(2)" class="select-input">
+                <div id="error2"></div>
+            </div>
+
+            <button id="compare" onclick = "compareSummoners()">Compare Summoners</button>
+    </div>
+
+
+    <script src="TFTResult.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+/* Style for the left and right halves */
+.split {
+    width: 50%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    overflow-x: hidden;
+}
+
+/* Style for the left half */
+.left {
+    left: 0;
+    background-color: #747875;
+}
+
+/* Style for the right half */
+.right {
+    right: 0;
+    background-color: #747875;
+}
+
+/* Style for the image in the left and right halves */
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%); /* Make the images gray*/
+    transition: filter 0.5s, transform 0.5s; /* Transition effects for the filter and transform properties */
+    transform: scale(0.8); /* Adjust the scale factor as needed to zoom out */
+}
+
+/* Hover effect to make the image colourful on hover */
+.image:hover {
+    filter: grayscale(0%);
+    transform: scale(1); /* Reset the scale to its original size */
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Style for the text overlay */
+.text-overlay {
+    position: absolute;
+    top: 50%; /* Adjust as needed to vertically center the text */
+    left: 50%; /* Adjust as needed to horizontally center the text */
+    transform: translate(-50%, -50%); /* Center the text in the container */
+    color: orange; /* Text color */
+    padding: 10px 20px; /* Add padding to the text */
+    border-radius: 5px; /* Add rounded corners to the text overlay */
+    font-size: 100px; /* Increase the font size to 100px or adjust to your preference */
+    font-weight: bold; /* Apply bold font */
+    z-index: 1; /* Place the text overlay above the image */
+    text-align: center; /* Center-align the text horizontally */
+    line-height: 100%; /* Set the line height to the height of the container (100%) */
+}
+
+
+
+/* Style for the text overlay on hover */
+.image-container:hover .text-overlay {
+    display: none;
+}
