@@ -34,96 +34,28 @@
 
 
         <div class="forum-container">
-        <div class="forum-header">
-          Forum Posts
+            <div class="forum-header">
+                Community Forum
+            </div>
+            <div class="new-thread-form">
+                <input type="text" id="new-thread-title" placeholder="Thread Title">
+                <textarea id="new-thread-content" placeholder="Write your post here..."></textarea>
+                <input type="submit" value="Create Thread">
+            </div>
+            <div id="forum-threads">
+                <!-- Forum threads will appear here -->
+            </div>
         </div>
-        <div class="new-post-form">
-          <input type="text" id="new-post-content" placeholder="What's on your mind?">
-          <input type="submit" value="Post">
-        </div>
-        <!-- Posts will be appended here by JavaScript -->
-        <div id="forum-posts">
-          <!-- Forum posts will appear here -->
-        </div>
-      </div>
+    
+          
       
      
       
 
-    <script type="module">
-        
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
-        import { getFirestore, collection, addDoc, serverTimestamp, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
-
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-        const firebaseConfig = {
-            apiKey: "AIzaSyBnOi5d_SzizpqOVIGFxfqXmwYd-C8MahY",
-            authDomain: "statssummoner-63894.firebaseapp.com",
-            databaseURL: "https://statssummoner-63894-default-rtdb.europe-west1.firebasedatabase.app",
-            projectId: "statssummoner-63894",
-            storageBucket: "statssummoner-63894.appspot.com",
-            messagingSenderId: "609019999430",
-            appId: "1:609019999430:web:e3f66ee0dae9d2071493c7",
-            measurementId: "G-450L9T79JF"
-        };
-
-        
-        
-    
-    
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore();
-        
-                // Function to add a new forum post
-        async function addNewPost() {
-            const content = document.getElementById('new-post-content').value;
-            if (content) {
-            try {
-                await addDoc(collection(db, "forum"), {
-                content: content,
-                timestamp: serverTimestamp()
-                });
-                console.log("Document successfully written!");
-                document.getElementById('new-post-content').value = ''; // Clear the input field
-            } catch (error) {
-                console.error("Error writing document: ", error);
-            }
-            }
-        }
-
-        // Function to display forum posts in real-time
-        function displayPosts() {
-            const q = query(collection(db, "forum"), orderBy("timestamp", "desc"));
-            onSnapshot(q, (querySnapshot) => {
-            const forumPosts = document.getElementById('forum-posts');
-            forumPosts.innerHTML = ''; // Clear existing posts
-            querySnapshot.forEach((doc) => {
-                const post = doc.data();
-                const postElement = document.createElement('div');
-                postElement.classList.add('forum-post');
-                postElement.textContent = post.content; // Assuming 'content' is a field in your documents
-                forumPosts.appendChild(postElement);
-            });
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', (event) => {
-        document.querySelector('input[type="submit"]').addEventListener('click', addNewPost);
-        });
+    <script type="module" src="forum.js"> </script>
 
 
-        // Call the function to display forum posts
-        displayPosts();
-        </script>
-
-
-        <!-- <script src="Forum.js"></script> -->
+     
 
     </body>
  </html>

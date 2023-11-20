@@ -113,3 +113,115 @@ header nav .button2:hover{
     transform: scale(1.1); /* Increase the size on hover */
 }
 
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+  }
+  .forum-container {
+    margin: 20px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  .forum-header, .forum-post, .new-post-form {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+  }
+  .forum-header {
+    background-color: #f9f9f9;
+    font-weight: bold;
+  }
+  .new-post-form input[type=text] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  .new-post-form input[type=submit] {
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+
+  .forum-container {
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  .forum-header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-size: 24px;
+  }
+  
+  .forum-thread {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    margin-top: 10px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .forum-thread h3 {
+    margin: 0;
+    color: #333;
+  }
+  
+  .forum-thread p {
+    color: #666;
+  }
+  
+  .comment-section {
+    display: none;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+  }
+  
+  .new-thread-form,
+  .new-comment-form {
+    margin-top: 10px;
+  }
+  
+  .new-thread-form input[type="text"],
+  .new-thread-form textarea,
+  .new-comment-form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box; /* Include padding in the element's total width and height */
+  }
+  
+  .new-thread-form input[type="submit"],
+  .new-comment-form input[type="submit"] {
+    background-color: #5cb85c;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    display: block; /* Align button to the left */
+  }
+  
+  .new-thread-form input[type="submit"]:hover,
+  .new-comment-form input[type="submit"]:hover {
+    background-color: #4cae4c;
+  }
+  
+
+
+  .forum-thread {
+    /* ... */
+    overflow: hidden; /* Make sure that the overflow content is hidden when collapsed */
+  }
+
+
+  .comment-section {
+    display: none;
+    margin-top: 10px;
+    /* Additional styling here */
+  }
+  
+  .comment-section form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+
