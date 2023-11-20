@@ -28,79 +28,99 @@
                 <li><span><a href="Forum.html">Forum</a></span></li>
                 <li><span><a href="">Contact</a></span></li>
                 <li><span><a href="../login.html" class="button">Log-in</a></span></li>
+                
             </nav>
         </div>
 
 
-        <h1>Message Board</h1>
-        <form id="message-form">
-            <input type="text" id="message-input" placeholder="Type a message">
-            <button type="submit">Send</button>
-        </form>
-        <div id="messages"></div>
+        <div class="forum-container">
+        <div class="forum-header">
+          Forum Posts
+        </div>
+        <div class="new-post-form">
+          <input type="text" id="new-post-content" placeholder="What's on your mind?">
+          <input type="submit" value="Post">
+        </div>
+        <!-- Posts will be appended here by JavaScript -->
+        <div id="forum-posts">
+          <!-- Forum posts will appear here -->
+        </div>
+      </div>
+      
+     
+      
+
+    <script type="module">
+        
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, serverTimestamp, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
+
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyBnOi5d_SzizpqOVIGFxfqXmwYd-C8MahY",
+            authDomain: "statssummoner-63894.firebaseapp.com",
+            databaseURL: "https://statssummoner-63894-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "statssummoner-63894",
+            storageBucket: "statssummoner-63894.appspot.com",
+            messagingSenderId: "609019999430",
+            appId: "1:609019999430:web:e3f66ee0dae9d2071493c7",
+            measurementId: "G-450L9T79JF"
+        };
+
+        
+        
     
-
-   
-
-        <script type="module">
-            // Import the functions you need from the SDKs you need
-            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
-            import { getDatabase, ref, push, onValue, orderByChild, serverTimestamp } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js';
-            // TODO: Add SDKs for Firebase products that you want to use
-            // https://firebase.google.com/docs/web/setup#available-libraries
-            // Your web app's Firebase configuration
-            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-            const firebaseConfig = {
-
-                apiKey: "AIzaSyAH5gQt-ikaV10VUJZvIC-xfZIn2IGC3oY",
-                authDomain: "statsummoner.firebaseapp.com",
-                databaseURL: "https://statsummoner-default-rtdb.europe-west1.firebasedatabase.app",
-                projectId: "statsummoner",
-                storageBucket: "statsummoner.appspot.com",
-                messagingSenderId: "315016674830",
-                appId: "1:315016674830:web:3b4d2d8e421dbdedbd465f",
-                measurementId: "G-9VRZWM6VCF"
-
-};
-
-
-
-            // Initialize Firebase
-            const app = initializeApp(firebaseConfig);
-            const db = getDatabase(app);
-
-            
-            const messageForm = document.getElementById('message-form');
-            const messageInput = document.getElementById('message-input');
-            const messagesDiv = document.getElementById('messages');
-
-            messageForm.addEventListener('submit', e => {
-                e.preventDefault();
-                const message = messageInput.value;
-
-                // Push a new message to the Realtime Database
-                push(ref(db, 'messages'), {
-                    text: message,
-                    timestamp: serverTimestamp()
+    
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore();
+        
+                // Function to add a new forum post
+        async function addNewPost() {
+            const content = document.getElementById('new-post-content').value;
+            if (content) {
+            try {
+                await addDoc(collection(db, "forum"), {
+                content: content,
+                timestamp: serverTimestamp()
                 });
+                console.log("Document successfully written!");
+                document.getElementById('new-post-content').value = ''; // Clear the input field
+            } catch (error) {
+                console.error("Error writing document: ", error);
+            }
+            }
+        }
 
-                messageInput.value = '';
+        // Function to display forum posts in real-time
+        function displayPosts() {
+            const q = query(collection(db, "forum"), orderBy("timestamp", "desc"));
+            onSnapshot(q, (querySnapshot) => {
+            const forumPosts = document.getElementById('forum-posts');
+            forumPosts.innerHTML = ''; // Clear existing posts
+            querySnapshot.forEach((doc) => {
+                const post = doc.data();
+                const postElement = document.createElement('div');
+                postElement.classList.add('forum-post');
+                postElement.textContent = post.content; // Assuming 'content' is a field in your documents
+                forumPosts.appendChild(postElement);
             });
-
-            // Listen for messages in Real-time
-            onValue(orderByChild(ref(db, 'messages'), 'timestamp'), snapshot => {
-                messagesDiv.innerHTML = '';
-                snapshot.forEach(childSnapshot => {
-                    const message = childSnapshot.val().text;
-                    const messageElement = document.createElement('div');
-                    messageElement.textContent = message;
-                    messagesDiv.appendChild(messageElement);
-                });
             });
+        }
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelector('input[type="submit"]').addEventListener('click', addNewPost);
+        });
 
 
-
-    </script>
+        // Call the function to display forum posts
+        displayPosts();
+        </script>
 
 
         <!-- <script src="Forum.js"></script> -->
