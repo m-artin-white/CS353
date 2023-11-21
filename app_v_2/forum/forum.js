@@ -75,6 +75,14 @@
          threadContent.textContent = threadData.content;
          threadElement.appendChild(threadContent);
 
+         // Append timestamp to the thread element
+         if (threadData.timestamp) {
+            const threadTimestamp = document.createElement('div');
+            threadTimestamp.textContent = new Date(threadData.timestamp.toDate()).toLocaleString();
+            threadTimestamp.className = 'thread-timestamp';
+            threadElement.appendChild(threadTimestamp);
+        }
+
          // Create like and dislike buttons
          const likeButton = document.createElement('button');
          likeButton.textContent = `Like (${threadData.likes || 0})`;
@@ -160,19 +168,35 @@
      }
 
 
-     // Function to display comments for a thread
      function displayComments(threadId, commentSection) {
-     const q = query(collection(db, "threads", threadId, "comments"), orderBy("timestamp", "desc"));
-     onSnapshot(q, (querySnapshot) => {
-         commentSection.innerHTML = ''; // Clear existing comments
-         querySnapshot.forEach((doc) => {
-         const comment = doc.data();
-         const commentElement = document.createElement('p');
-         commentElement.textContent = comment.content;
-         commentSection.appendChild(commentElement);
-         });
-     });
-     }
+        const q = query(collection(db, "threads", threadId, "comments"), orderBy("timestamp", "desc"));
+        onSnapshot(q, (querySnapshot) => {
+            commentSection.innerHTML = ''; // Clear existing comments
+            querySnapshot.forEach((doc) => {
+                const commentData = doc.data();
+    
+                // Create comment element
+                const comment = document.createElement('div');
+                comment.className = 'comment';
+    
+                // Add comment text
+                const commentText = document.createElement('p');
+                commentText.textContent = commentData.content;
+                comment.appendChild(commentText);
+    
+                // Append timestamp to the comment element
+                if (commentData.timestamp) {
+                    const commentTimestamp = document.createElement('span');
+                    commentTimestamp.textContent = ` - ${new Date(commentData.timestamp.toDate()).toLocaleString()}`;
+                    commentTimestamp.className = 'comment-timestamp';
+                    commentText.appendChild(commentTimestamp);
+                }
+    
+                commentSection.appendChild(comment);
+            });
+        });
+    }
+    
 
      function updateLikes(threadId, newLikeCount) {
      const threadRef = doc(db, "threads", threadId);
@@ -201,4 +225,4 @@
      // Call displayThreads to initialize the thread display
      displayThreads();
      });
- 
+
