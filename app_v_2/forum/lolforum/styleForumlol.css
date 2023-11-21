@@ -1,0 +1,233 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+body{
+    background-color: #ffe79a;
+}
+
+header{
+    width: 100vw;
+    height: 100px;
+    border-bottom: solid 1px rgba(16, 16, 16, 0.1);
+    font-family: 'Poppins';
+    background-color: #ffa952;
+}
+
+header .inner{
+    width: 1300px; /* This is the inner width of the content inside of your header (80%, etc) */
+    height: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+header .logo{
+    display: table;
+    height: 100%;
+    float: left;
+    color: black;
+}
+
+header .logo div{
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+header .logo img{
+    height: 50px;
+    margin-top: 5px; /* Optical alignment of the logo */
+}
+
+header nav{
+    float: right;
+    height: 100%;
+}
+
+header nav li{
+    display: table;
+    height: 100%;
+    float: left;
+    margin-right: 30px;
+}
+
+header nav li:last-of-type{
+    margin-right: 0;
+}
+
+header nav span {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+header nav a{
+    color: #101010;
+}
+
+header nav .button{
+    background-color: lightblue; /* This HEX is the color of the button */
+    color: black;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin-left: 10px;
+    display: inline;
+}
+
+header nav .button2{
+    background-color: lightblue; /* This HEX is the color of the button */
+    color: black;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin-left: 10px;
+    display: inline;
+}
+
+header nav .button:hover{
+    filter: brightness(1.05);
+}
+
+header nav .button2:hover{
+    filter: brightness(1.05);
+}
+
+
+/* Forum Container and General Styles */
+.forum-container {
+  max-width: 90%;
+  margin: 2rem auto;
+  padding: 20px;
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+/* Thread Styling */
+.forum-thread {
+  background-color: #FAFAFA;
+  border: 1px solid #E0E0E0;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  padding: 15px;
+  transition: all 0.3s ease;
+}
+
+.forum-thread:hover {
+  border-color: #BDBDBD;
+}
+
+.forum-thread h3 {
+  color: #333;
+  font-size: 1.3em;
+  margin-bottom: 0.5rem;
+}
+
+.forum-thread p {
+  color: #555;
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+.thread-timestamp {
+  color: #999;
+  font-size: 0.9em;
+  margin-top: 10px;
+}
+
+/* Button Styling */
+.forum-thread button {
+  background-color: #ff8c00;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  margin-top: 10px;
+  padding: 8px 15px;
+  transition: background-color 0.2s;
+}
+
+.forum-thread button:hover {
+  background-color: #cf7900;
+}
+
+/* Comment Section Styling */
+.comment-section {
+  border-top: 1px solid #E0E0E0;
+  margin-top: 20px;
+  padding-top: 15px;
+}
+
+.comment {
+  border-bottom: 1px solid #E0E0E0;
+  padding-bottom: 10px;
+}
+
+.comment:last-child {
+  border-bottom: none;
+}
+
+.comment-timestamp {
+  color: #777;
+  font-size: 0.85em;
+  margin-top: 5px;
+}
+
+/* New Comment Form Styling */
+.new-comment-form {
+  align-items: center;
+  display: flex;
+  margin-top: 20px;
+}
+
+.new-comment-form input[type="text"], .new-thread-form input[type="text"], .new-thread-form textarea {
+  border: 1px solid #DDD;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.new-comment-form input[type="submit"], .new-thread-form input[type="submit"] {
+  background-color: #ff8c00;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  padding: 10px 15px;
+  transition: background-color 0.2s;
+  margin-left: 10px;
+}
+
+.new-comment-form input[type="submit"]:hover, .new-thread-form input[type="submit"]:hover {
+  background-color: #cf7900;
+}
+
+/* Improve focus state for better accessibility */
+input[type="text"], textarea, button {
+  outline: none;
+}
+
+input[type="text"]:focus, textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .forum-container {
+      max-width: 95%;
+  }
+
+  .new-comment-form input[type="text"], .new-thread-form input[type="text"], .new-thread-form textarea {
+      margin-right: 0;
+  }
+
+  .new-comment-form input[type="submit"], .new-thread-form input[type="submit"] {
+      width: 100%;
+      margin-left: 0;
+      margin-top: 0.5rem;
+  }
+}

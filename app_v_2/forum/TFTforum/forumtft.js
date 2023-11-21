@@ -36,7 +36,7 @@
  const content = document.getElementById('new-thread-content').value;
  if (title && content) {
      try {
-     await addDoc(collection(db, "threads"), {
+     await addDoc(collection(db, "threads2"), {
          title: title,
          content: content,
          likes: 0,
@@ -53,7 +53,7 @@
  }
 
  function displayThreads() {
-     const q = query(collection(db, "threads"), orderBy("timestamp", "desc"));
+     const q = query(collection(db, "threads2"), orderBy("timestamp", "desc"));
      onSnapshot(q, (querySnapshot) => {
          const forumThreads = document.getElementById('forum-threads');
          forumThreads.innerHTML = ''; // Clear existing threads
@@ -157,7 +157,7 @@
          return;
      }
      try {
-         await addDoc(collection(db, "threads", threadId, "comments"), {
+         await addDoc(collection(db, "threads2", threadId, "comments"), {
          content: commentContent,
          timestamp: serverTimestamp()
          });
@@ -169,7 +169,7 @@
 
 
      function displayComments(threadId, commentSection) {
-        const q = query(collection(db, "threads", threadId, "comments"), orderBy("timestamp", "desc"));
+        const q = query(collection(db, "threads2", threadId, "comments"), orderBy("timestamp", "desc"));
         onSnapshot(q, (querySnapshot) => {
             commentSection.innerHTML = ''; // Clear existing comments
             querySnapshot.forEach((doc) => {
@@ -199,14 +199,14 @@
     
 
      function updateLikes(threadId, newLikeCount) {
-     const threadRef = doc(db, "threads", threadId);
+     const threadRef = doc(db, "threads2", threadId);
      updateDoc(threadRef, {
          likes: newLikeCount
      });
      }
 
      function updateDislikes(threadId, newDislikeCount) {
-     const threadRef = doc(db, "threads", threadId);
+     const threadRef = doc(db, "threads2", threadId);
      updateDoc(threadRef, {
          dislikes: newDislikeCount
      });
