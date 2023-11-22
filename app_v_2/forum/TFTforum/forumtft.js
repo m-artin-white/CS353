@@ -1,3 +1,5 @@
+
+ 
  // Import the functions you need from the SDKs you need
  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
  import { getFirestore, collection, addDoc, serverTimestamp, query, orderBy, onSnapshot, doc, updateDoc } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js";
@@ -225,4 +227,3 @@
      // Call displayThreads to initialize the thread display
      displayThreads();
      });
-
