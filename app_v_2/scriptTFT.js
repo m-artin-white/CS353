@@ -1,4 +1,4 @@
-var API_key = "RGAPI-5bcb7918-2799-4df0-95d1-e8242189fb01";
+var API_key = "RGAPI-517fbdeb-3146-404f-95cd-f326fb99f295";
 var summoner_name = "";
 var server = "";
 const Regions = [
