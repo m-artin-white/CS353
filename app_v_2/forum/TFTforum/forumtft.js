@@ -36,7 +36,7 @@
  const content = document.getElementById('new-thread-content').value;
  if (title && content) {
      try {
-     await addDoc(collection(db, "threads"), {
+     await addDoc(collection(db, "threads2"), {
          title: title,
          content: content,
          likes: 0,
@@ -53,7 +53,7 @@
  }
 
  function displayThreads() {
-     const q = query(collection(db, "threads"), orderBy("timestamp", "desc"));
+     const q = query(collection(db, "threads2"), orderBy("timestamp", "desc"));
      onSnapshot(q, (querySnapshot) => {
          const forumThreads = document.getElementById('forum-threads');
          forumThreads.innerHTML = ''; // Clear existing threads
@@ -74,6 +74,14 @@
          const threadContent = document.createElement('p');
          threadContent.textContent = threadData.content;
          threadElement.appendChild(threadContent);
+
+         // Append timestamp to the thread element
+         if (threadData.timestamp) {
+            const threadTimestamp = document.createElement('div');
+            threadTimestamp.textContent = new Date(threadData.timestamp.toDate()).toLocaleString();
+            threadTimestamp.className = 'thread-timestamp';
+            threadElement.appendChild(threadTimestamp);
+        }
 
          // Create like and dislike buttons
          const likeButton = document.createElement('button');
@@ -149,7 +157,7 @@
          return;
      }
      try {
-         await addDoc(collection(db, "threads", threadId, "comments"), {
+         await addDoc(collection(db, "threads2", threadId, "comments"), {
          content: commentContent,
          timestamp: serverTimestamp()
          });
@@ -160,29 +168,45 @@
      }
 
 
-     // Function to display comments for a thread
      function displayComments(threadId, commentSection) {
-     const q = query(collection(db, "threads", threadId, "comments"), orderBy("timestamp", "desc"));
-     onSnapshot(q, (querySnapshot) => {
-         commentSection.innerHTML = ''; // Clear existing comments
-         querySnapshot.forEach((doc) => {
-         const comment = doc.data();
-         const commentElement = document.createElement('p');
-         commentElement.textContent = comment.content;
-         commentSection.appendChild(commentElement);
-         });
-     });
-     }
+        const q = query(collection(db, "threads2", threadId, "comments"), orderBy("timestamp", "desc"));
+        onSnapshot(q, (querySnapshot) => {
+            commentSection.innerHTML = ''; // Clear existing comments
+            querySnapshot.forEach((doc) => {
+                const commentData = doc.data();
+    
+                // Create comment element
+                const comment = document.createElement('div');
+                comment.className = 'comment';
+    
+                // Add comment text
+                const commentText = document.createElement('p');
+                commentText.textContent = commentData.content;
+                comment.appendChild(commentText);
+    
+                // Append timestamp to the comment element
+                if (commentData.timestamp) {
+                    const commentTimestamp = document.createElement('span');
+                    commentTimestamp.textContent = ` - ${new Date(commentData.timestamp.toDate()).toLocaleString()}`;
+                    commentTimestamp.className = 'comment-timestamp';
+                    commentText.appendChild(commentTimestamp);
+                }
+    
+                commentSection.appendChild(comment);
+            });
+        });
+    }
+    
 
      function updateLikes(threadId, newLikeCount) {
-     const threadRef = doc(db, "threads", threadId);
+     const threadRef = doc(db, "threads2", threadId);
      updateDoc(threadRef, {
          likes: newLikeCount
      });
      }
 
      function updateDislikes(threadId, newDislikeCount) {
-     const threadRef = doc(db, "threads", threadId);
+     const threadRef = doc(db, "threads2", threadId);
      updateDoc(threadRef, {
          dislikes: newDislikeCount
      });
@@ -201,4 +225,4 @@
      // Call displayThreads to initialize the thread display
      displayThreads();
      });
- 
+
