@@ -113,140 +113,96 @@ header nav .button2:hover{
     transform: scale(1.1); /* Increase the size on hover */
 }
 
-/* Forum Container and General Styles */
-.forum-container {
-  max-width: 90%;
-  margin: 2rem auto;
-  padding: 20px;
-  background-color: #FFFFFF;
-  border-radius: 12px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-  font-family: 'Arial', sans-serif;
-}
 
-/* Thread Styling */
-.forum-thread {
-  background-color: #FAFAFA;
-  border: 1px solid #E0E0E0;
-  border-radius: 10px;
-  margin-bottom: 1.5rem;
-  padding: 15px;
-  transition: all 0.3s ease;
-}
-
-.forum-thread:hover {
-  border-color: #BDBDBD;
-}
-
-.forum-thread h3 {
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
   color: #333;
-  font-size: 1.3em;
-  margin-bottom: 0.5rem;
 }
 
-.forum-thread p {
-  color: #555;
-  font-size: 1em;
-  line-height: 1.5;
-}
-
-.thread-timestamp {
-  color: #999;
-  font-size: 0.9em;
-  margin-top: 10px;
-}
-
-/* Button Styling */
-.forum-thread button {
-  background-color: #ff8c00;
-  border: none;
-  border-radius: 5px;
+footer {
+  background-color: #333;
   color: white;
-  cursor: pointer;
-  margin-top: 10px;
-  padding: 8px 15px;
-  transition: background-color 0.2s;
+  text-align: center;
+  padding: 1em 0;
 }
 
-.forum-thread button:hover {
-  background-color: #cf7900;
+main {
+  padding: 20px;
 }
 
-/* Comment Section Styling */
-.comment-section {
-  border-top: 1px solid #E0E0E0;
-  margin-top: 20px;
-  padding-top: 15px;
+.intro-section {
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
-.comment {
-  border-bottom: 1px solid #E0E0E0;
-  padding-bottom: 10px;
-}
-
-.comment:last-child {
-  border-bottom: none;
-}
-
-.comment-timestamp {
-  color: #777;
-  font-size: 0.85em;
-  margin-top: 5px;
-}
-
-/* New Comment Form Styling */
-.new-comment-form {
-  align-items: center;
+.games-container {
   display: flex;
-  margin-top: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.new-comment-form input[type="text"], .new-thread-form input[type="text"], .new-thread-form textarea {
-  border: 1px solid #DDD;
-  border-radius: 5px;
-  padding: 10px;
-  width: 100%;
+.game-forum {
+  width: 45%;
+  margin: 1rem;
+  padding: 1rem;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.game-forum img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.game-forum h2 {
+  color: #333;
+  font-size: 1.4em;
   margin-bottom: 0.5rem;
 }
 
-.new-comment-form input[type="submit"], .new-thread-form input[type="submit"] {
-  background-color: #ff8c00;
-  border: none;
-  border-radius: 5px;
+.game-forum p {
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.button {
+  padding: 10px 20px;
+  background-color: #007bff;
   color: white;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
-  padding: 10px 15px;
+  text-decoration: none;
   transition: background-color 0.2s;
-  margin-left: 10px;
 }
 
-.new-comment-form input[type="submit"]:hover, .new-thread-form input[type="submit"]:hover {
-  background-color: #cf7900;
+.button:hover {
+  background-color: #0056b3;
 }
 
-/* Improve focus state for better accessibility */
-input[type="text"], textarea, button {
-  outline: none;
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: relative;
+  width: 100%;
 }
 
-input[type="text"]:focus, textarea:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
-}
-
-/* Responsive Design */
 @media (max-width: 768px) {
-  .forum-container {
-      max-width: 95%;
+  .games-container {
+      flex-direction: column;
+      align-items: center;
   }
 
-  .new-comment-form input[type="text"], .new-thread-form input[type="text"], .new-thread-form textarea {
-      margin-right: 0;
-  }
-
-  .new-comment-form input[type="submit"], .new-thread-form input[type="submit"] {
-      width: 100%;
-      margin-left: 0;
-      margin-top: 0.5rem;
+  .game-forum {
+      width: 90%;
   }
 }
