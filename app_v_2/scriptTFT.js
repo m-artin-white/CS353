@@ -1,4 +1,4 @@
-var API_key = "RGAPI-4226ddb4-de54-46aa-9067-180b04f5a90a";
+var API_key = "RGAPI-5bcb7918-2799-4df0-95d1-e8242189fb01";
 var summoner_name = "";
 var server = "";
 const Regions = [
@@ -23,12 +23,17 @@ const Regions = [
 
 
 async function Search_summoner(){
+
   clearStats();
   document.getElementById("error").innerHTML = "";
   summoner_name = document.getElementById("summoner_name").value;
   chooseRegion();
   await data();
   await compareButtonCheck();
+
+  document.getElementById('result').style.display = 'table';
+  document.getElementById('result').classList.add('fadeIn');
+
 }
 
 function chooseRegion(){
@@ -147,7 +152,7 @@ async function data(){
       document.getElementById("veteran1").innerHTML = ""; }
 
     if(summoner_choice == "Summoner 2"){
-      document.getElementById("error").innerHTML = "User not found within this region.";
+      document.getElementById("error2").innerHTML = "User not found within this region.";
       document.getElementById("imageCell2").innerHTML = "";
       document.getElementById("name2").innerHTML = "";
       document.getElementById("level2").innerHTML= "";
@@ -434,3 +439,7 @@ function compareRatios(ratio1, ratio2) {
     return "Less";
   }
 }
+
+
+
+

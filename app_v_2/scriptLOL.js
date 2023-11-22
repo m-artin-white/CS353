@@ -29,6 +29,9 @@ async function Search_summoner(){
   chooseRegion();
   await data();
   await compareButtonCheck();
+
+  document.getElementById('result').style.display = 'table';
+  document.getElementById('result').classList.add('fadeIn');
 }
 
 function chooseRegion(){
