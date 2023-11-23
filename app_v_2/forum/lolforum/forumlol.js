@@ -1,5 +1,5 @@
  // Import the functions you need from the SDKs you need
- import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
+ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
  import { getFirestore, collection, addDoc, serverTimestamp, query, orderBy, onSnapshot, doc, updateDoc } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js";
 
 
@@ -228,10 +228,10 @@
 
 
 
-     let userCreds = JSON.parse(sessionStorage.getItem("user-creds"));
-     let userInfo = JSON.parse(sessionStorage.getItem("user-info"));
-     let signOutButton = document.getElementById("signOutButton");
-     let loginButton = document.getElementById("loginButton");
+let userCreds = JSON.parse(sessionStorage.getItem("user-creds"));
+let userInfo = JSON.parse(sessionStorage.getItem("user-info"));
+let signOutButton = document.getElementById("signOutButton");
+let loginButton = document.getElementById("loginButton");
 
 if(userInfo){
     loginButton.style.display = "none";
@@ -242,6 +242,7 @@ if(!userInfo){
 }
 
 let signout = () =>{
+    console.log("Hello");
     sessionStorage.removeItem("user-creds");
     sessionStorage.removeItem("user-info");
     window.location.href = "../../home.html";
