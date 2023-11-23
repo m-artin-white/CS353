@@ -36,6 +36,10 @@
           <form id = "loginForm">
             <div class="row">
               <i class="fas fa-user"></i>
+              <input id = "playerName" type="text" placeholder="Summoner Name" required>
+            </div>
+            <div class="row">
+              <i class="fas fa-user"></i>
               <input id = "email" type="email" placeholder="Email" required>
             </div>
             <div class="row">
@@ -74,6 +78,7 @@
         const auth = getAuth(app);
         const dbref = ref(db);
 
+        let summonerName = document.getElementById("summonerName");
         let email = document.getElementById("email");
         let password = document.getElementById("password");
         let loginForm = document.getElementById("loginForm");
@@ -88,6 +93,8 @@
                   console.log(snapshot);
                   if(snapshot.exists){
                     sessionStorage.setItem("user-info", JSON.stringify({
+                      summonerName: snapshot.val().summonerName,
+                      email: snapshot.val().email,
                       name: snapshot.val().name
                     }))
 
