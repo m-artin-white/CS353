@@ -225,3 +225,25 @@ function displayThreads() {
     // Call displayThreads to initialize the thread display
     displayThreads();
     });
+
+    let userCreds = JSON.parse(sessionStorage.getItem("user-creds"));
+let userInfo = JSON.parse(sessionStorage.getItem("user-info"));
+let signOutButton = document.getElementById("signOutButton");
+let loginButton = document.getElementById("loginButton");
+
+if(userInfo){
+    loginButton.style.display = "none";
+}
+
+if(!userInfo){
+    signOutButton.style.display = "none";
+}
+
+let signout = () =>{
+    console.log("Hello");
+    sessionStorage.removeItem("user-creds");
+    sessionStorage.removeItem("user-info");
+    window.location.href = "../../home.html";
+}
+
+signOutButton.addEventListener('click', signout);
