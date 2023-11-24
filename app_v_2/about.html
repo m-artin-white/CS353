@@ -31,6 +31,85 @@
             </nav>
         </div>
     </header>
+    <h id = "heading">About Us</h>
+    <section class="about-us">
+        <div class="about">
+        <img src="https://media.tenor.com/IZHrApbRyVcAAAAC/emoji-watching-from-shadows-emoji.gif" class="pic">
+        <div class="text">
+            <h2>Martin</h2>
+            <h5>Front-end Developer</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita natus ad sed harum itaque ullam enim quas, veniam accusantium, quia animi id eos adipisci iusto molestias asperiores explicabo cum vero atque amet corporis! Soluta illum facere consequuntur magni. Ullam dolorem repudiandae cumque voluptate consequatur consectetur, eos provident necessitatibus reiciendis corrupti!</p>
+            <div class="data">
+                <input id = "coolButton" type ="button" value = "Find out more" onclick="testAudio()">
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section class="about-us">
+        <div class="about">
+        <img src="https://media.tenor.com/IZHrApbRyVcAAAAC/emoji-watching-from-shadows-emoji.gif" class="pic">
+        <div class="text">
+            <h2>David</h2>
+            <h5>Front-end Developer</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita natus ad sed harum itaque ullam enim quas, veniam accusantium, quia animi id eos adipisci iusto molestias asperiores explicabo cum vero atque amet corporis! Soluta illum facere consequuntur magni. Ullam dolorem repudiandae cumque voluptate consequatur consectetur, eos provident necessitatibus reiciendis corrupti!</p>
+            <div class="data">
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section class="about-us">
+        <div class="about">
+        <img src="https://media.tenor.com/IZHrApbRyVcAAAAC/emoji-watching-from-shadows-emoji.gif" class="pic">
+        <div class="text">
+            <h2>Redon</h2>
+            <h5>Front-end Developer</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita natus ad sed harum itaque ullam enim quas, veniam accusantium, quia animi id eos adipisci iusto molestias asperiores explicabo cum vero atque amet corporis! Soluta illum facere consequuntur magni. Ullam dolorem repudiandae cumque voluptate consequatur consectetur, eos provident necessitatibus reiciendis corrupti!</p>
+            <div class="data">
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section class="about-us">
+        <div class="about">
+        <img src="https://media.tenor.com/IZHrApbRyVcAAAAC/emoji-watching-from-shadows-emoji.gif" class="pic">
+        <div class="text">
+            <h2>Ciaran</h2>
+            <h5>Front-end Developer</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita natus ad sed harum itaque ullam enim quas, veniam accusantium, quia animi id eos adipisci iusto molestias asperiores explicabo cum vero atque amet corporis! Soluta illum facere consequuntur magni. Ullam dolorem repudiandae cumque voluptate consequatur consectetur, eos provident necessitatibus reiciendis corrupti!</p>
+            <div class="data">
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section class="about-us">
+        <div class="about">
+        <img src="https://media.tenor.com/IZHrApbRyVcAAAAC/emoji-watching-from-shadows-emoji.gif" class="pic">
+        <div class="text">
+            <h2>Laszló</h2>
+            <h5>Front-end Developer</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita natus ad sed harum itaque ullam enim quas, veniam accusantium, quia animi id eos adipisci iusto molestias asperiores explicabo cum vero atque amet corporis! Soluta illum facere consequuntur magni. Ullam dolorem repudiandae cumque voluptate consequatur consectetur, eos provident necessitatibus reiciendis corrupti!</p>
+            <div class="data">
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section class="about-us">
+        <div class="about">
+        <img src="https://media.tenor.com/IZHrApbRyVcAAAAC/emoji-watching-from-shadows-emoji.gif" class="pic">
+        <div class="text">
+            <h2>Daniel</h2>
+            <h5>Front-end Developer</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita natus ad sed harum itaque ullam enim quas, veniam accusantium, quia animi id eos adipisci iusto molestias asperiores explicabo cum vero atque amet corporis! Soluta illum facere consequuntur magni. Ullam dolorem repudiandae cumque voluptate consequatur consectetur, eos provident necessitatibus reiciendis corrupti!</p>
+            <div class="data">
+            </div>
+        </div>
+        </div>
+    </section>
 
     <script>
         let userCreds = JSON.parse(sessionStorage.getItem("user-creds"));
@@ -53,7 +132,15 @@
         }
 
         signOutButton.addEventListener('click', signout);
-        console.log("");
+        
+        document.addEventListener('DOMContentLoaded', function() {
+        var soundEffect = new Audio('resources/test.mp3'); // Replace with the path to your sound effect file
+        var playButton = document.getElementById('coolButton');
+
+        playButton.addEventListener('click', function() {
+            soundEffect.play();
+        });
+        });
     </script>
 </body>
 </html>
