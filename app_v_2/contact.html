@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
     <title>Home Page</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
     <header>
@@ -27,41 +28,42 @@
                 <li><span><a href="forum/ForumHomepage.html">Forum</a></span></li>
                 <li><span><a href="info.html">Info</a></span></li>
                 <li id ="loginButton"><span><a href="login.html" class="button">Log-in</a></span></li>
-                
+                <li id ="signOutButton"><span><a href="#" class="button2">Sign Out</a></span></li>
             </nav>
         </div>
     </header>
 
     <div class="container">
         <div class="wrapper">
-          <div class="title"><span>Login</span></div>
-          <form id = "loginForm">
+          <div class="title"><span>Contact Us</span></div>
+          <form id = "sendForm" onsubmit="sendEmail(); reset(); return false;">
             <div class="row">
               <i class="fas fa-user"></i>
-              <input id = "playerName" type="text" placeholder="Summoner Name" required>
+              <input id = "name" type="text" placeholder="Your Name" required>
             </div>
             <div class="row">
               <i class="fas fa-user"></i>
-              <input id = "email" type="email" placeholder="Email" required>
+              <input id = "email" type="email" placeholder="Your Email" required>
             </div>
             <div class="row">
               <i class="fas fa-lock"></i>
-              <input id = "password" type="password" placeholder="Password" required>
+              <input id = "phoneNumber" type="number" placeholder="Your Phone Number" required>
             </div>
-            <div class="pass"><a href="forgotPassword.html">Forgot password?</a></div>
+            <textarea id = "message" columns = "4" placeholder="How can we help you?"></textarea>
             <div class="row button">
-              <input type="submit" value="Login">
+              <input type="submit" value="Send Message">
             </div>
-            <div class="signup-link">Not a member? <a href="signup.html">Signup now</a></div>
           </form>
         </div>
       </div>
-
     <script>
         let userCreds = JSON.parse(sessionStorage.getItem("user-creds"));
         let userInfo = JSON.parse(sessionStorage.getItem("user-info"));
         let signOutButton = document.getElementById("signOutButton");
         let loginButton = document.getElementById("loginButton");
+
+        
+
 
         if(userInfo){
             loginButton.style.display = "none";
@@ -78,7 +80,32 @@
         }
 
         signOutButton.addEventListener('click', signout);
-        console.log("");
+
+        function sendEmail(){
+            (function(){
+                emailjs.init("x0LoPFy7BLM0O6Z1X"); //Account public key
+            })();
+
+            var params = {
+                from_name: document.getElementById("email").value,
+                name_id: document.getElementById("name").value,
+                email_id: document.getElementById("email").value,
+                number_id: document.getElementById("phoneNumber").value, 
+                message_info: document.getElementById("message").value,
+                sender: document.getElementById("email").value,
+                to: "statssummoner@gmail.com" 
+            };
+
+            var service_id = "service_zlmw6ul";
+            var template_id = "template_1ysma2g";
+
+            emailjs.send(service_id, template_id, params)
+            .then(res => {
+                alert("Email sent! We'll get back to you shortly.");
+            })
+            .catch();
+        }
+    
     </script>
 </body>
 </html>

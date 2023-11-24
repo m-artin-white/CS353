@@ -69,15 +69,53 @@ header nav span {
 header nav a{
     color: #101010;
 }
-
 header nav .button{
     background-color: lightblue; /* This HEX is the color of the button */
     color: black;
     padding: 10px 20px;
     border-radius: 4px;
+    margin-left: 10px;
+    display: inline;
+}
+
+header nav .button2{
+    background-color: lightblue; /* This HEX is the color of the button */
+    color: black;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin-left: 10px;
+    display: inline;
 }
 
 header nav .button:hover{
+    filter: brightness(1.05);
+}
+
+header nav .button2:hover{
+    filter: brightness(1.05);
+}header nav .button{
+    background-color: lightblue; /* This HEX is the color of the button */
+    color: black;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin-left: 10px;
+    display: inline;
+}
+
+header nav .button2{
+    background-color: lightblue; /* This HEX is the color of the button */
+    color: black;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin-left: 10px;
+    display: inline;
+}
+
+header nav .button:hover{
+    filter: brightness(1.05);
+}
+
+header nav .button2:hover{
     filter: brightness(1.05);
 }
 
@@ -87,7 +125,7 @@ header nav .button:hover{
   .container{
     max-width: 440px;
     padding: 0 20px;
-    margin: 170px auto;
+    margin: 100px auto;
   }
   .wrapper{
     width: 100%;
@@ -155,6 +193,9 @@ header nav .button:hover{
   .wrapper form .pass a:hover{
     text-decoration: underline;
   }
+  .wrapper form .pass a:hover{
+    text-decoration: underline;
+  }
   .wrapper form .button input{
     color: #fff;
     font-size: 20px;
@@ -167,15 +208,18 @@ header nav .button:hover{
   form .button input:hover{
     filter: brightness(1.2);
   }
-  .wrapper form .signup-link{
-    text-align: center;
-    margin-top: 20px;
-    font-size: 17px;
+
+  textarea{
+    height: 150px; /* Adjust the height as needed */
+    width: 100%;
+    outline: none;
+    padding: 10px; /* Adjust the padding as needed */
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+    font-size: 16px;
+    transition: all 0.3s ease;
   }
-  .wrapper form .signup-link a{
-    color: #ffa952;
-    text-decoration: none;
-  }
-  form .signup-link a:hover{
-    text-decoration: underline;
+  
+ textarea::placeholder {
+    color: #999;
   }
