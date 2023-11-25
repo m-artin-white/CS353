@@ -24,7 +24,7 @@
                 <li><span><a href="home.html">Home</a></span></li>
                 <li><span><a href="stat_tracker/LOL/indexLOL.html">League Of Legends</a></span></li>
                 <li><span><a href="stat_tracker/TFT/indexTFT.html">Teamfight Tactics</a></span></li>
-                <li><span><a href="forum/ForumHomepage.html">Forum</a></span></li>
+                <li id = "forumpagebutton" ><span><a href="forum/ForumHomepage.html" id="forumLink">Forum</a></span></li>
                 <li><span><a href="info/info.html">Info</a></span></li>
                 <li id ="loginButton"><span><a href="Login/login.html" class="button">Log-in</a></span></li>
                 <li id ="signOutButton"><span><a href="#" class="button2">Sign Out</a></span></li>
@@ -46,6 +46,7 @@
         let userInfo = JSON.parse(sessionStorage.getItem("user-info"));
         let signOutButton = document.getElementById("signOutButton");
         let loginButton = document.getElementById("loginButton");
+        let forumLink = document.getElementById("forumLink");
 
         if(userInfo){
             loginButton.style.display = "none";
@@ -53,6 +54,7 @@
 
         if(!userInfo){
             signOutButton.style.display = "none";
+            forumLink.href = "forum/Forumlogin.html"; 
         }
 
         let signout = () =>{

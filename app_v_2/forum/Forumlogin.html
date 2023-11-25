@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="styleINFO.css">
+    <link rel="stylesheet" href="styleForum.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,36 +17,67 @@
         <div class="inner">
             <div class="logo">
                 <div>
-                    <h1>StatsSummoner.com</h1>
+                    <h1>StatsSummoner.com ( Forum )</h1>
                 </div>
             </div>
             <nav>
                 <li><span><a href="../home.html">Home</a></span></li>
                 <li><span><a href="../stat_tracker/LOL/indexLOL.html">League Of Legends</a></span></li>
                 <li><span><a href="../stat_tracker/TFT/indexTFT.html">Teamfight Tactics</a></span></li>
-                <li id = "forumpagebutton" ><span><a href="../forum/ForumHomepage.html" id="forumLink">Forum</a></span></li>
-                <li><span><a href="info.html">Info</a></span></li>
+                <li id = "forumpagebutton" ><span><a href="ForumHomepage.html" id="forumLink">Forum</a></span></li>
+                <li><span><a href="../info/info.html">Info</a></span></li>
                 <li id ="loginButton"><span><a href="../Login/login.html" class="button">Log-in</a></span></li>
                 <li id ="signOutButton"><span><a href="#" class="button2">Sign Out</a></span></li>
             </nav>
         </div>
     </header>
 
-    <div class="center-images">
-        <a href="aboutus/about.html">
-            <img src="https://th.bing.com/th/id/OIG.gEAparn9Dgl8qeBgv4kN?w=1024&h=1024&rs=1&pid=ImgDetMain" alt="Image 1" class="hoverable">
-        </a>
-        <a href="contactus/contact.html">
-            <img src="https://th.bing.com/th/id/OIG.L62bvAS4Oby.aDXQMGoj?pid=ImgGn" alt="Image 2" class="hoverable">
-        </a>
-    </div>
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Game Stat Tracking Forums</title>
+        <link rel="stylesheet" href="styleForumlogin.css">
+    </head>
+    <body>
+    
+        <main>
+  
+    
+            <div class="games-container">
+
+                <section class="game-forum" id="game2-forum">
+                    <h2>Oh No!</h2>
+                    <p>You are not logged in</p>
+                    <img src="https://pbs.twimg.com/media/FKGbrVKaQAM8Fst.jpg" alt="Image 1" class="hoverable">
+                    
+                    <p>Unfortunatly you must be logged in to use our community forum.</p>
+                    <li id ="loginButton"><span><a href="../Login/login.html" class="button">Log-in</a></span></li>
+                </section>
+            </div>
+        </main>
+    
+    
+        <footer>
+            <!-- Include your existing footer here -->
+        </footer>
+    </body>
+    </html>
+    
+
+
+
+
 
     <script>
         let userCreds = JSON.parse(sessionStorage.getItem("user-creds"));
         let userInfo = JSON.parse(sessionStorage.getItem("user-info"));
         let signOutButton = document.getElementById("signOutButton");
         let loginButton = document.getElementById("loginButton");
-        let forumLink = document.getElementById("forumLink");
+      
+        
 
         if(userInfo){
             loginButton.style.display = "none";
@@ -54,7 +85,7 @@
 
         if(!userInfo){
             signOutButton.style.display = "none";
-            forumLink.href = "../forum/Forumlogin.html"; 
+            forumLink.href = "Forumlogin.html"; 
         }
 
         let signout = () =>{
@@ -64,7 +95,6 @@
         }
 
         signOutButton.addEventListener('click', signout);
-        console.log("");
     </script>
 </body>
 </html>

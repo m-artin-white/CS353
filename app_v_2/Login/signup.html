@@ -23,7 +23,7 @@
                 <li><span><a href="../home.html">Home</a></span></li>
                 <li><span><a href="../stat_tracker/LOL/indexLOL.html">League Of Legends</a></span></li>
                 <li><span><a href="../stat_tracker/TFT/indexTFT.html">Teamfight Tactics</a></span></li>
-                <li><span><a href="../forum/ForumHomepage.html">Forum</a></span></li>
+                <li id = "forumpagebutton" ><span><a href="../forum/ForumHomepage.html" id="forumLink">Forum</a></span></li>
                 <li><span><a href="../info/info.html">Info</a></span></li>
                 <li><span><a href="login.html" class="button">Log-in</a></span></li>
             </nav>
@@ -92,7 +92,17 @@
         let password = document.getElementById("password");
         let password2 = document.getElementById("passwordConfirm");
         let registerForm = document.getElementById("registerForm");
+        let forumLink = document.getElementById("forumLink");
 
+        document.addEventListener('DOMContentLoaded', () => {
+        // Check if user is logged in
+        const userInfo = JSON.parse(sessionStorage.getItem("user-info"));
+
+        if (!userInfo) {
+            // Redirect to a different page if not logged in
+            forumLink.href = "../forum/Forumlogin.html"; // Replace with your actual login page path
+        }
+    });
         let registerUser = evt => {
             evt.preventDefault();
 
