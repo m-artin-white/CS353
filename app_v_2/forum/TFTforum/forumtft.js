@@ -166,12 +166,18 @@ function displayThreads() {
     }
 
     async function addComment(threadId, commentContent) {
+        var userInfoString = sessionStorage.getItem('user-info');
+        // Parse the JSON string into an object
+        var userInfoObj = JSON.parse(userInfoString);
+        // Access the summonerName property
+        var summonerName = userInfoObj.summonerName;
     if (commentContent.trim() === "") {
         console.log("Comment is empty, not posting");
         return;
     }
     try {
         await addDoc(collection(db, "threads2", threadId, "comments"), {
+        user: summonerName,
         content: commentContent,
         timestamp: serverTimestamp()
         });
@@ -183,34 +189,42 @@ function displayThreads() {
 
 
     function displayComments(threadId, commentSection) {
-       const q = query(collection(db, "threads2", threadId, "comments"), orderBy("timestamp", "desc"));
-       onSnapshot(q, (querySnapshot) => {
-           commentSection.innerHTML = ''; // Clear existing comments
-           querySnapshot.forEach((doc) => {
-               const commentData = doc.data();
-   
-               // Create comment element
-               const comment = document.createElement('div');
-               comment.className = 'comment';
-   
-               // Add comment text
-               const commentText = document.createElement('p');
-               commentText.textContent = commentData.content;
-               comment.appendChild(commentText);
-   
-               // Append timestamp to the comment element
-               if (commentData.timestamp) {
-                   const commentTimestamp = document.createElement('span');
-                   commentTimestamp.textContent = ` - ${new Date(commentData.timestamp.toDate()).toLocaleString()}`;
-                   commentTimestamp.className = 'comment-timestamp';
-                   commentText.appendChild(commentTimestamp);
-               }
-   
-               commentSection.appendChild(comment);
-           });
-       });
-   }
-   
+        const q = query(collection(db, "threads2", threadId, "comments"), orderBy("timestamp", "desc"));
+        onSnapshot(q, (querySnapshot) => {
+            commentSection.innerHTML = ''; // Clear existing comments
+            querySnapshot.forEach((doc) => {
+                const commentData = doc.data();
+     
+                // Create comment element
+                const comment = document.createElement('div');
+                comment.className = 'comment';
+     
+                // Add username element
+                const commentUsername = document.createElement('strong');
+                commentUsername.textContent = commentData.user; // Fallback to 'Anonymous' if no username
+                comment.appendChild(commentUsername);
+     
+                // Add colon and space after username
+                commentUsername.insertAdjacentHTML('afterend', ': ');
+     
+                // Add comment text
+                const commentText = document.createElement('p');
+                commentText.textContent = commentData.content;
+                comment.appendChild(commentText);
+     
+                // Append timestamp to the comment element
+                if (commentData.timestamp) {
+                    const commentTimestamp = document.createElement('span');
+                    commentTimestamp.textContent = ` - ${new Date(commentData.timestamp.toDate()).toLocaleString()}`;
+                    commentTimestamp.className = 'comment-timestamp';
+                    commentText.appendChild(commentTimestamp);
+                }
+     
+                commentSection.appendChild(comment);
+            });
+        });
+     }
+     
 
     function updateLikes(threadId, newLikeCount) {
     const threadRef = doc(db, "threads2", threadId);
