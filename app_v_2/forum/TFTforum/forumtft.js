@@ -34,10 +34,18 @@ const db = getFirestore();
 async function createThread() {
 const title = document.getElementById('new-thread-title').value;
 const content = document.getElementById('new-thread-content').value;
+var userInfoString = sessionStorage.getItem('user-info');
+
+// Parse the JSON string into an object
+var userInfoObj = JSON.parse(userInfoString);
+
+// Access the summonerName property
+var summonerName = userInfoObj.summonerName;
 if (title && content) {
     try {
     await addDoc(collection(db, "threads2"), {
         title: title,
+        user: summonerName,
         content: content,
         likes: 0,
         dislikes: 0,
@@ -66,9 +74,15 @@ function displayThreads() {
         threadElement.classList.add('forum-thread');
 
         // Create and append the thread title element
-        const threadTitle = document.createElement('h3');
+        const threadTitle = document.createElement('h2');
         threadTitle.textContent = threadData.title;
         threadElement.appendChild(threadTitle);
+
+        // Create and append the thread title element
+        const threadSummonerName = document.createElement('h3');
+        threadSummonerName.textContent = threadData.user;
+        threadElement.appendChild(threadSummonerName);
+        
 
         // Create and append the thread content element
         const threadContent = document.createElement('p');
