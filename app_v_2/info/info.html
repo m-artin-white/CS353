@@ -21,22 +21,22 @@
                 </div>
             </div>
             <nav>
-                <li><span><a href="home.html">Home</a></span></li>
-                <li><span><a href="indexLOL.html">League Of Legends</a></span></li>
-                <li><span><a href="indexTFT.html">Teamfight Tactics</a></span></li>
-                <li><span><a href="forum/ForumHomepage.html">Forum</a></span></li>
+                <li><span><a href="../home.html">Home</a></span></li>
+                <li><span><a href="../stat_tracker/LOL/indexLOL.html">League Of Legends</a></span></li>
+                <li><span><a href="../stat_tracker/TFT/indexTFT.html">Teamfight Tactics</a></span></li>
+                <li><span><a href="../forum/ForumHomepage.html">Forum</a></span></li>
                 <li><span><a href="info.html">Info</a></span></li>
-                <li id ="loginButton"><span><a href="login.html" class="button">Log-in</a></span></li>
+                <li id ="loginButton"><span><a href="../Login/login.html" class="button">Log-in</a></span></li>
                 <li id ="signOutButton"><span><a href="#" class="button2">Sign Out</a></span></li>
             </nav>
         </div>
     </header>
 
     <div class="center-images">
-        <a href="about.html">
+        <a href="aboutus/about.html">
             <img src="https://th.bing.com/th/id/OIG.gEAparn9Dgl8qeBgv4kN?w=1024&h=1024&rs=1&pid=ImgDetMain" alt="Image 1" class="hoverable">
         </a>
-        <a href="contact.html">
+        <a href="contactus/contact.html">
             <img src="https://th.bing.com/th/id/OIG.L62bvAS4Oby.aDXQMGoj?pid=ImgGn" alt="Image 2" class="hoverable">
         </a>
     </div>
@@ -58,7 +58,7 @@
         let signout = () =>{
             sessionStorage.removeItem("user-creds");
             sessionStorage.removeItem("user-info");
-            window.location.href = "home.html";
+            window.location.href = "../home.html";
         }
 
         signOutButton.addEventListener('click', signout);
