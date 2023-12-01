@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="stylesheet" href="styleHOME.css">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
     <title>Home Page</title>
 </head>
 <body>
+
+    <!-- All code below creates the navigation bar -->
     <header>
         <div class="inner">
             <div class="logo">
@@ -32,6 +32,7 @@
         </div>
     </header>
 
+    <!-- Images imported for the buttons to access the viewing stats pages -->
     <div class="center-images">
         <a href="stat_tracker/LOL/indexLOL.html">
             <img src="https://im.uniqlo.com/global-cms/spa/resd22c04ff0d082123df7386e1b6732c99fr.jpg" alt="Image 1" class="hoverable">
@@ -42,21 +43,26 @@
     </div>
 
     <script>
+        // Accessing elements form session storage.
         let userCreds = JSON.parse(sessionStorage.getItem("user-creds"));
         let userInfo = JSON.parse(sessionStorage.getItem("user-info"));
         let signOutButton = document.getElementById("signOutButton");
         let loginButton = document.getElementById("loginButton");
         let forumLink = document.getElementById("forumLink");
 
+
+        //If user is logged in, the login button will not display.
         if(userInfo){
             loginButton.style.display = "none";
         }
 
+        //If user is logged out, the signout button will not display.
         if(!userInfo){
             signOutButton.style.display = "none";
             forumLink.href = "forum/Forumlogin.html"; 
         }
 
+        //Signing out simply removes the users credentials from session storage.
         let signout = () =>{
             sessionStorage.removeItem("user-creds");
             sessionStorage.removeItem("user-info");
