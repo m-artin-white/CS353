@@ -58,11 +58,15 @@
  
 
       <script type="module">
+        //Below I have used many of the Firebase modules to use certain functions to achieve my goal. 
+
+        //Importing modules and functions from the firebase websites.
         
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
         import { getDatabase, set, ref, child, get } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
         import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
        
+         //Config var for the databases config information
         const firebaseConfig = {
           apiKey: "AIzaSyBnOi5d_SzizpqOVIGFxfqXmwYd-C8MahY",
           authDomain: "statssummoner-63894.firebaseapp.com",
@@ -74,12 +78,13 @@
           measurementId: "G-HMNSYTS2TE"
         };
       
-      
+        //Connecting to my database and setting up authentication
         const app = initializeApp(firebaseConfig);
         const db = getDatabase();
         const auth = getAuth(app);
         const dbref = ref(db);
 
+        //Retrieves user information from form...
         let summonerName = document.getElementById("summonerName");
         let email = document.getElementById("email");
         let password = document.getElementById("password");
@@ -88,16 +93,18 @@
         
         
 
-
+        //Function to log in user...
         let loginUser = evt => {
             evt.preventDefault();
 
+            //This function was obtained directly from Firebase
             signInWithEmailAndPassword(auth, email.value, password.value)
             .then((credentials)=>{
               console.log(credentials);
                 get(child(dbref, 'UsersAuthList/'+credentials.user.uid)).then((snapshot) => {
                   console.log(snapshot);
                   if(snapshot.exists){
+                    //Setting session with the new credentials from the current user...
                     sessionStorage.setItem("user-info", JSON.stringify({
                       summonerName: snapshot.val().summonerName,
                       email: snapshot.val().email,

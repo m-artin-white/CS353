@@ -83,11 +83,14 @@
 
         signOutButton.addEventListener('click', signout);
 
+        //In order to send emails directly from Javascript to our company email I used emailjs.
+        //I use a lot of functions below from this API to achieve this.
         function sendEmail(){
             (function(){
+                //Using the public key from our account...
                 emailjs.init("x0LoPFy7BLM0O6Z1X"); //Account public key
             })();
-
+            //Retrieving info from the form and also adding in where we want the email sent to...
             var params = {
                 from_name: document.getElementById("email").value,
                 name_id: document.getElementById("name").value,
@@ -101,6 +104,7 @@
             var service_id = "service_zlmw6ul";
             var template_id = "template_1ysma2g";
 
+            //Send function with the information above as params, displays an alert when email is sent correctly.
             emailjs.send(service_id, template_id, params)
             .then(res => {
                 alert("Email sent! We'll get back to you shortly.");

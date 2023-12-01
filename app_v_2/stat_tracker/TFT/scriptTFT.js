@@ -1,6 +1,12 @@
+//The whole idea about searching for our user's statistics revolves arounf
+//piecing together a URL that we can then send through the Riot Games'
+//API
+
+//Riot Games API key. Required to access their data.
 var API_key = "RGAPI-6426f356-0f2a-4653-9c72-ea83fef59bda";
 var summoner_name = "";
 var server = "";
+//Array storing the URL to different regions.
 const Regions = [
   'https://br1.api.riotgames.com',
   'https://eun1.api.riotgames.com',
@@ -21,7 +27,11 @@ const Regions = [
 
 ];
 
-
+//This funtion is called on pressing the search button on our different viewing stats pages.
+//It calls other functions to create the required URL.
+//It also clears the table using clearStats().
+//Lastly, it checks to see if the user has two summoners in the table and if so, 
+//displays the CompareSummoners() button.
 async function Search_summoner(){
 
   clearStats();
@@ -36,6 +46,8 @@ async function Search_summoner(){
 
 }
 
+//This function works with the region choosing box.
+//Each region is associated with a specific URL.
 function chooseRegion(){
 
   var selectElement = document.getElementById("choose_region");
@@ -95,11 +107,17 @@ function chooseRegion(){
   }
 }
 
+
+//The data() function is the function that ultimately pieces together the 
+//information for the URL and sends it to the Riot Games API.
+//There are specific pieces of information that have to be added to the Riot Games
+//API URL so that the correct information is returned.
 async function data(){
   var summonerNameURL = "/tft/summoner/v1/summoners/by-name/"+summoner_name;
   var fullSummonerURL = server + summonerNameURL + "?api_key=" + API_key;
   var summoner_choice = document.getElementById("chooseSummonerNumber").value;
 
+  //Try/Catch to catch errors when fetching the information from the URL
   try{
   const dataSummoner = await fetch(fullSummonerURL);
   const dataSummonerJSON = await dataSummoner.json();
@@ -264,7 +282,8 @@ async function data(){
 }
 
 
-
+//This function checks to see if the table is populated with two users.
+//If so, it displays the compare summoners button.
 async function compareButtonCheck() {
   var check1 = document.getElementById("level1");
   var check2 = document.getElementById("level2");
@@ -276,7 +295,9 @@ async function compareButtonCheck() {
   }
 }
 
-
+//The compareSummoners() function simply retrieves the information from the table and 
+//performs a mathematical comparison on them and displays the correct information on the
+//right hand side of the table.
 function compareSummoners(){
   //level comparison
   var level1 = document.getElementById("level1").innerHTML;
@@ -384,6 +405,7 @@ function compareSummoners(){
   }
 }
 
+//Clears the table of information.
 function clearStats(){
   document.getElementById("sum1level").innerHTML = "";
   document.getElementById("sum2level").innerHTML = "";
@@ -397,6 +419,7 @@ function clearStats(){
   document.getElementById("sum2leaguePoints").innerHTML = "";
 }
 
+//Calculates the ratio of wins and losses
 function calculateSimplestRatio(a, b) {
   
   a = Math.abs(Math.round(a));
@@ -420,6 +443,7 @@ function calculateSimplestRatio(a, b) {
   return `${simplifiedA}:${simplifiedB}`;
 }
 
+//Comapres ratios
 function compareRatios(ratio1, ratio2) {
   // Split each ratio into its parts
   const [numerator1, denominator1] = ratio1.split(":").map(Number);

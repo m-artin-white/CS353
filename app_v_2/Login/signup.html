@@ -63,12 +63,16 @@
       </div>
 
       <script type="module">
+         //Below I have used many of the Firebase modules to use certain functions to achieve my goal. 
+
+        //Importing modules and functions from the firebase websites.
         
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
         import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
         import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
        
+        //Config var for the databases config information
         const firebaseConfig = {
           apiKey: "AIzaSyBnOi5d_SzizpqOVIGFxfqXmwYd-C8MahY",
           authDomain: "statssummoner-63894.firebaseapp.com",
@@ -80,12 +84,13 @@
           measurementId: "G-HMNSYTS2TE"
         };
       
-      
+      //Connecting to my database and setting up authentication
         const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
         const db = getDatabase();
         const auth = getAuth(app);
 
+      //Setting up variables and retrieving user information from form...
         let summonerName = document.getElementById("summonerName");
         let name = document.getElementById("name");
         let email = document.getElementById("email");
@@ -105,7 +110,7 @@
     });
         let registerUser = evt => {
             evt.preventDefault();
-
+          //Firebase function create a user and store in database using auth, email and password...
             createUserWithEmailAndPassword(auth, email.value, password.value)
             .then((credentials)=>{
                 set(ref(db, 'UsersAuthList/'+credentials.user.uid),{
