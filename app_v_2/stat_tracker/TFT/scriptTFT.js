@@ -3,7 +3,7 @@
 //API
 
 //Riot Games API key. Required to access their data.
-var API_key = "RGAPI-6426f356-0f2a-4653-9c72-ea83fef59bda";
+var API_key = "RGAPI-5ea86ede-14a3-47f2-8e80-e727c3c331cd";
 var summoner_name = "";
 var server = "";
 //Array storing the URL to different regions.
@@ -464,6 +464,13 @@ function compareRatios(ratio1, ratio2) {
   }
 }
 
-
-
-
+module.export = {
+  Search_summoner,
+  chooseRegion,
+  data,
+  compareButtonCheck,
+  compareSummoners,
+  clearStats,
+  calculateSimplestRatio,
+  compareRatios,
+};
