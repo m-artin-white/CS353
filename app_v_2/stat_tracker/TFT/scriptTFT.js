@@ -3,7 +3,7 @@
 //API
 
 //Riot Games API key. Required to access their data.
-var API_key = "RGAPI-5ea86ede-14a3-47f2-8e80-e727c3c331cd";
+var API_key = "RGAPI-04e1c54a-bf5f-4613-ac35-6179f8edfcfd";
 var summoner_name = "";
 var server = "";
 //Array storing the URL to different regions.
@@ -126,7 +126,7 @@ async function data(){
   //Summoner's profile picture
   var profile_pic_id_number = dataSummonerJSON.profileIconId;
   var profile_pic_url = "https://ddragon.leagueoflegends.com/cdn/13.20.1/img/profileicon/"+profile_pic_id_number+".png";
-  var imgTag = '<img src="' + profile_pic_url + '" alt="Summoner Profile Picture">';
+  var imgTag = '<img crossorigin="anonymous" src="' + profile_pic_url + '" alt="Summoner Profile Picture">';
   if(summoner_choice == "Summoner 1"){
     document.getElementById("imageCell1").innerHTML = imgTag;
   }
@@ -464,13 +464,4 @@ function compareRatios(ratio1, ratio2) {
   }
 }
 
-module.export = {
-  Search_summoner,
-  chooseRegion,
-  data,
-  compareButtonCheck,
-  compareSummoners,
-  clearStats,
-  calculateSimplestRatio,
-  compareRatios,
-};
+
